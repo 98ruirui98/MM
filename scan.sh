@@ -24,16 +24,20 @@ while true; do
     fi
 
     # 检查日志文件的修改时间
-    LAST_MODIFIED=$(stat -c %Y "$LOG_FILE")
-    CURRENT_TIME=$(date +%s)
-    TIME_DIFF=$((CURRENT_TIME - LAST_MODIFIED))
+    if [ -f "$LOG_FILE" ]; then
+        LAST_MODIFIED=$(stat -c %Y "$LOG_FILE")
+        CURRENT_TIME=$(date +%s)
+        TIME_DIFF=$((CURRENT_TIME - LAST_MODIFIED))
 
-    if [ "$TIME_DIFF" -ge 180 ]; then
-        echo "Log file has not changed for 3 minutes. Executing miner stop..."
-        miner stop
-        sleep 20
-        echo "Executing miner start after 20 seconds..."
-        miner start
+        if [ "$TIME_DIFF" -ge 180 ]; then
+            echo "Log file has not changed for 3 minutes. Executing miner stop..."
+            miner stop
+            sleep 20
+            echo "Executing miner start after 20 seconds..."
+            miner start
+        fi
+    else
+        echo "Log file does not exist."
     fi
 
     sleep 30
