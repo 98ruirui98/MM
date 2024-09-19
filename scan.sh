@@ -5,33 +5,20 @@ WORKER_NAME=$(hostname)
 MINER_CMD="/hive/miners/xmrig-new/xmrig/6.22.0/xmrig -o pool.supportxmr.com:5555 -u 4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGkEY6XGuNRS6tPxJN -p $WORKER_NAME -a rx/0 -k --donate-level 1"
 IDLE_THRESHOLD=5
 MINER_PID=0
-LOCK_FILE="/tmp/miner_script.lock"
-
-# 检查锁文件是否存在
-if [ -e "$LOCK_FILE" ]; then
-    echo "脚本已经在运行。"
-    exit 1
-fi
-
-# 创建锁文件
-touch "$LOCK_FILE"
-
-# 确保脚本退出时删除锁文件
-trap "rm -f $LOCK_FILE" EXIT
 
 while true; do
     CURRENT_IDLE_COUNT=$(tail -n 10 "$LOG_FILE" | grep -c "rqiner_manager] Idle period | Waiting for work")
-    echo "当前空闲计数: $CURRENT_IDLE_COUNT"
+    echo "Current idle count: $CURRENT_IDLE_COUNT"
 
     if [ "$CURRENT_IDLE_COUNT" -ge "$IDLE_THRESHOLD" ] && [ "$MINER_PID" -eq 0 ]; then
-        echo "启动矿工..."
+        echo "Starting miner..."
         nohup $MINER_CMD >> "$LOG_FILE" 2>&1 &
         MINER_PID=$!
-        echo "矿工PID: $MINER_PID"
+        echo "Miner PID: $MINER_PID"
     fi
 
     if [ "$CURRENT_IDLE_COUNT" -lt "$IDLE_THRESHOLD" ] && [ "$MINER_PID" -ne 0 ]; then
-        echo "停止矿工..."
+        echo "Stopping miner..."
         kill "$MINER_PID"
         MINER_PID=0
     fi
@@ -42,10 +29,10 @@ while true; do
     TIME_DIFF=$((CURRENT_TIME - LAST_MODIFIED))
 
     if [ "$TIME_DIFF" -ge 180 ]; then
-        echo "日志文件已3分钟未修改。执行矿工停止..."
+        echo "Log file has not changed for 3 minutes. Executing miner stop..."
         miner stop
         sleep 20
-        echo "20秒后执行矿工启动..."
+        echo "Executing miner start after 20 seconds..."
         miner start
     fi
 
