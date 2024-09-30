@@ -4,7 +4,7 @@ LOG_FILE="/var/log/miner/custom/custom_cpu.log"
 # 获取当前主机名作为矿工名称
 WORKER_NAME=$(hostname)
 # 矿机启动命令
-MINER_CMD="/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://route.oreminepool.top:8080/ --server-url public --worker-wallet-address FSapBfxcadEU6E1a8Hr6F4sJaKZ6V7XV3PMvySksCXBf"
+MINER_CMD="/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://route.oreminepool.top:8080/ --server-url public --worker-wallet-address XzuEvwWvGLNWjfbkJzCoaKTZTzVj43eym1JrTQDwkH3"
 # 空闲阈值
 IDLE_THRESHOLD=5
 # 矿机进程ID初始化
