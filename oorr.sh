@@ -1,4 +1,3 @@
-
 # 日志文件路径
 LOG_FILE="/var/log/miner/custom/custom_cpu.log"
 # 获取当前主机名作为矿工名称
@@ -47,3 +46,4 @@ while true; do
     # 每次循环后等待30秒
     sleep 30
 done
+
