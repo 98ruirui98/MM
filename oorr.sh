@@ -1,6 +1,6 @@
 LOG_FILE="/var/log/miner/custom/custom_cpu.log"
 WORKER_NAME=$(hostname)
-MINER_CMD="/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://47.254.182.83:8080/ --server-url direct --worker-wallet-address XzuEvwWvGLNWjfbkJzCoaKTZTzVj43eym1JrTQDwkH3 > /var/log/miner/custom/custom.log 2>&1"
+MINER_CMD="/hive/miners/custom/OreMinePoolWorker_hiveos/ore-mine-pool-linux worker --route-server-url http://47.254.182.83:8080/ --server-url direct --worker-wallet-address XzuEvwWvGLNWjfbkJzCoaKTZTzVj43eym1JrTQDwkH3"
 IDLE_THRESHOLD=5
 MINER_PID=0
 
@@ -10,7 +10,7 @@ while true; do
 
     if [ "$CURRENT_IDLE_COUNT" -ge "$IDLE_THRESHOLD" ] && [ "$MINER_PID" -eq 0 ]; then
         echo "启动矿机..."
-        nohup $MINER_CMD &
+        nohup $MINER_CMD > /var/log/miner/custom/custom.log 2>&1 &
         MINER_PID=$!
         echo "矿机PID: $MINER_PID"
     fi
