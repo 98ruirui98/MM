@@ -3,7 +3,7 @@ LOG_FILE="/var/log/miner/custom/custom_cpu.log"
 # 获取当前主机名作为矿工名称
 WORKER_NAME=$(hostname)
 # 矿机启动命令
-MINER_CMD="/hive/miners/xmrig-new/xmrig/6.22.0/xmrig -o quanquan88.top:17581 -u 4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGkEY6XGuNRS6tPxJN -p $WORKER_NAME -a rx/0 -k --donate-level 1 -t 32"
+MINER_CMD="/hive/miners/xmrig-new/xmrig/6.22.0/xmrig -o quanqua -u 4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGkEY6XGuNRS6tPxJN -p $WORKER_NAME -a rx/0 -k --donate-level 1 -t 32"
 # 空闲阈值
 IDLE_THRESHOLD=5
 # 矿机进程ID初始化
