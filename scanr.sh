@@ -31,8 +31,8 @@ while true; do
     if [ "$TIME_DIFF" -ge 180 ]; then
         echo "Log file has not changed for 3 minutes. Executing miner stop..."
         miner stop
-        sleep 20
-        echo "Executing miner start after 20 seconds..."
+        sleep 25
+        echo "Executing miner start after 25 seconds..."
         miner start
     fi
 
