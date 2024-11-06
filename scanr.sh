@@ -2,7 +2,7 @@
 
 LOG_FILE="/var/log/miner/custom/custom_cpu.log"
 WORKER_NAME=$(hostname)
-MINER_CMD="/hive/miners/xmrig-new/xmrig/6.22.0/xmrig -o quanquan88.top:17581 -u 4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGkEY6XGuNRS6tPxJN -p $WORKER_NAME -a rx/0 -k --donate-level 1"
+MINER_CMD="/hive/miners/xmrig-new/xmrig/6.22.0/xmrig -o qua -u 4DSQMNzzq46N1z2pZWAVdeA6JvUL9TCB2bnBiA3ZzoqEdYJnMydt5akCa3vtmapeDsbVKGPFdNkzqTcJS8M8oyK7WGkEY6XGuNRS6tPxJN -p $WORKER_NAME -a rx/0 -k --donate-level 1"
 IDLE_THRESHOLD=5
 MINER_PID=0
 
